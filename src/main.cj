@@ -1,3 +1,4 @@
+package xx
 import std.io.*
 import std.collection.*
 
