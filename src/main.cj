@@ -21,18 +21,22 @@ main() {
     for (right in 0..(s.size - 1)) {
         // 当前字符（单字符字符串），将字节转换为 Rune
         let current_char = Rune(s[right])
+        
         // 如果当前字符已经在窗口中出现过
         let maybe_last_pos = char_map.get(current_char)
-        if (maybe_last_pos != None) {
-            let last_pos = maybe_last_pos
-            // 移动左边界到上次出现位置的右侧
-            // 注意：使用max确保左边界不会向左移动
+        if(let Some(lastpos) <- maybe_last_pos) {
+            // 上次出现位置
             if (let Some(pos) <- char_map.get(current_char)) {
                 if (pos + 1 > left) {
                     left = pos + 1
                 }
             }
+        }else{
+            println("pass_error")
         }
+        
+        let (x,y) = (1,2)
+        
         
         // 更新当前字符的最新位置
         char_map.add(current_char, right)
